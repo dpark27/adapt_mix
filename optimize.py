@@ -12,12 +12,12 @@ from itertools import combinations
 
 def main():
     parser = optparse.OptionParser()
-    parser.add_option('-g', '--genotypes', dest='genotypes', action='store', type='string', default='')
+    #parser.add_option('-g', '--genotypes', dest='genotypes', action='store', type='string', default='')
     parser.add_option('-d', '--data_prefix', dest='data_prefix', action='store', type='string', default='')
     parser.add_option('-p', '--pop_list', dest='pop_list', action='store', type='string', default='CEU,YRI,GIH')
     parser.add_option('-c', '--chrom', dest='chrom', action='store', type='string', default='')
     parser.add_option('-z', '--zscores', dest='zscores', action='store', type='string', default='')
-    parser.add_option('-l', '--use_likelihood_optimization', dest='use_likelihood_optimization', action='store', type='string', default='0')
+    #parser.add_option('-l', '--use_likelihood_optimization', dest='use_likelihood_optimization', action='store', type='string', default='0')
     parser.add_option('-r', '--lambda_value', dest='lambda_value', action='store', type='string', default='0.1')
     parser.add_option('-w', '--window_size', dest='window_size', action='store', type='string', default='100')
     parser.add_option('-b', '--block_size', dest='block_size', action='store', type='string', default='100')
