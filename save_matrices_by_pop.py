@@ -10,7 +10,7 @@ from itertools import combinations
 def main():
     parser = optparse.OptionParser()
     parser.add_option('-p', '--ped_file', dest='ped_file', action='store', type='string', default='')
-    parser.add_option('-s', '--sample_file', dest='sample_file', action='store', type='string', default='/u/home/s/sihyung/impmix/cad_1kg.pops')
+    parser.add_option('-s', '--sample_file', dest='sample_file', action='store', type='string', default='')
     parser.add_option('-l', '--population', dest='population', action='store', type='string', default='MXL')
     parser.add_option('-o', '--output_dir', dest='output_dir', action='store', type='string', default='.')
     parser.add_option('-c', '--chrom', dest='chrom', action='store', type='string', default='.')
