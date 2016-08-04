@@ -20,7 +20,7 @@ def main():
     #parser.add_option('-l', '--use_likelihood_optimization', dest='use_likelihood_optimization', action='store', type='string', default='0')
     parser.add_option('-r', '--lambda_value', dest='lambda_value', action='store', type='string', default='0.1')
     parser.add_option('-w', '--window_size', dest='window_size', action='store', type='string', default='100')
-    parser.add_option('-b', '--block_size', dest='block_size', action='store', type='string', default='100')
+    parser.add_option('-b', '--block_size', dest='block_size', action='store', type='string', default='1000')
     parser.add_option('-o', '--output_file', dest='output_file', action='store', type='string', default='0')
 
     (options, args) = parser.parse_args()
