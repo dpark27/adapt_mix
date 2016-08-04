@@ -71,7 +71,7 @@ def optimize_by_mse(weights, *args):
     zscores = args[3]
     lambda_value = args[4]
     window_size = args[5]
-    block_size = args[5]
+    block_size = args[6]
 
     mse = 1000
     squared_sum = 0.0
