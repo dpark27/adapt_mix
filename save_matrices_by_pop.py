@@ -57,7 +57,7 @@ def main():
 
 
 def load_samples(sample_file):
-    samples = pd.read_csv(sample_file, delimiter='\t')
+    samples = pd.read_csv(sample_file, delimiter=' ')
 
     return samples
 
