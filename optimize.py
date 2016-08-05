@@ -310,11 +310,15 @@ def load_pop_variances(pop_list, data_prefix, block_idx, chrom):
 
 
 def get_zscores_in_block(zscores, i, block_size):
-    zscores_in_block = zscores.iloc[i:(i+block_size)]
+    zscores_in_block = None
+    if (i+1000) > zscores.shape[0]:
+        zscores_in_block = zscores.iloc[i:]    
+    else:
+        zscores_in_block = zscores.iloc[i:(i+block_size)]
+
     zscores_in_block.index = range(0, zscores_in_block.shape[0])
 
     return zscores_in_block
-
 
 #################### Window Code ################################
 def get_pop_data_in_window(pop_means_in_block, pop_cors_in_block, pop_covs_in_block, pop_variances_in_block, window_size, j):
@@ -327,21 +331,36 @@ def get_pop_data_in_window(pop_means_in_block, pop_cors_in_block, pop_covs_in_bl
 
 
 def get_zscores_in_window(zscores_in_block, window_size, j):
-    zscores_in_window = zscores_in_block.iloc[j:(j+window_size)]
+    zscores_in_window = None
+    if (j+window_size) > zscores_in_block.shape[0]:
+        zscores_in_window = zscores_in_block.iloc[j:]
+    else:
+        zscores_in_window = zscores_in_block.iloc[j:(j+window_size)]    
+    
     zscores_in_window.index = range(0, zscores_in_window.shape[0])
 
     return zscores_in_window
 
 
 def get_pop_means_in_window(pop_means_in_block, window_size, j):
-    pop_means = pop_means_in_block.iloc[j:(j+window_size), :]
+    pop_means = None
+    if (j+window_size) > pop_means_in_block.shape[0]:
+        pop_means = pop_means_in_block.iloc[j:, :]
+    else:
+        pop_means = pop_means_in_block.iloc[j:(j+window_size), :]
+    
     pop_means.index = range(0, pop_means.shape[0])
 
     return pop_means
 
 
 def get_pop_variances_in_window(pop_variances_in_block, window_size, j):
-    pop_variances = pop_variances_in_block.iloc[j:(j+window_size), :]
+    pop_variances = None
+    if (j+window_size) > pop_variances_in_block.shape[0]:
+        pop_variances = pop_variances_in_block.iloc[j:, :]
+    else:
+        pop_variances = pop_variances_in_block.iloc[j:(j+window_size), :]
+
     pop_variances.index = range(0, pop_variances.shape[0])
 
     return pop_variances
@@ -350,7 +369,11 @@ def get_pop_variances_in_window(pop_variances_in_block, window_size, j):
 def get_pop_cors_in_window(pop_cors_in_block, window_size, j):
     pop_cors = {}
     for pop in pop_cors_in_block:
-        pop_cors[pop] = pop_cors_in_block[pop].iloc[j:(j+window_size), j:(j+window_size)]
+        if (j+window_size) > pop_cors_in_block[pop].shape[0]:
+            pop_cors[pop] = pop_cors_in_block[pop].iloc[j:, j:]
+        else:
+            pop_cors[pop] = pop_cors_in_block[pop].iloc[j:(j+window_size), j:(j+window_size)]
+
         pop_cors[pop].index = range(0, pop_cors[pop].shape[0])
         pop_cors[pop].columns = range(0, pop_cors[pop].shape[0])
 
@@ -360,7 +383,11 @@ def get_pop_cors_in_window(pop_cors_in_block, window_size, j):
 def get_pop_covs_in_window(pop_covs_in_block, window_size, j):
     pop_covs = {}
     for pop in pop_covs_in_block:
-        pop_covs[pop] = pop_covs_in_block[pop].iloc[j:(j+window_size), j:(j+window_size)]
+        if (j+window_size) > pop_covs_in_block[pop].shape[0]:
+            pop_covs[pop] = pop_covs_in_block[pop].iloc[j:, j:]
+        else:
+            pop_covs[pop] = pop_covs_in_block[pop].iloc[j:(j+window_size), j:(j+window_size)]
+            
         pop_covs[pop].index = range(0, pop_covs[pop].shape[0])
         pop_covs[pop].columns = range(0, pop_covs[pop].shape[0])
 
